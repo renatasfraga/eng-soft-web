@@ -1,0 +1,12 @@
+#nav {
+  background-color: #022a5e;
+  width: 100%;
+  border-spacing: 1px;
+}
+
+.navbar-title {
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+  padding-right: 0%;
+}
