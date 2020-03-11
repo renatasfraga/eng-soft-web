@@ -13,20 +13,30 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { UserModule } from './user/user.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    ProposalModule,
+    UserModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ProposalModule,
     MatSliderModule,
     MatMenuModule,
     MatButtonModule,
     MatGridListModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
