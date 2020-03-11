@@ -1,0 +1,36 @@
+<mat-grid-list cols="1" rowHeight="40em">
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-title class="align">
+        Logotipo
+      </mat-card-title>
+      <mat-card-content>
+        <mat-form-field appearance="outline" color="basic">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" />
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+          >
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-content>
+        <button mat-flat-button color="accent" style="width: 100%;">LOGIN</button>
+      </mat-card-content>
+      <mat-card-footer>
+        <a mat-button routerLink=".">Não é cadastrado? Crie sua conta</a>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
