@@ -2,6 +2,7 @@ package edu.unisinos.bemapi.domains.user.entity;
 
 
 import edu.unisinos.bemapi.domains.user.enums.CovenantEnum;
+import edu.unisinos.bemapi.domains.user.enums.SexEnum;
 import edu.unisinos.bemapi.utils.entity.EntityDefault;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,7 @@ public class User extends EntityDefault {
     private String fullName;
 
     @Enumerated(EnumType.STRING)
-    private String sex;
+    private SexEnum sex;
 
     private LocalDate birthDate;
 
