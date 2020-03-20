@@ -5,11 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Slf4j
-@ResponseStatus(code = HttpStatus.NOT_FOUND)
-public class NotFoundException extends RuntimeException {
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class BusinessException extends RuntimeException {
 
-    public NotFoundException(String message) {
+    public BusinessException(String message) {
         super(message);
-        log.error("NotFoundException - message - {}", message);
     }
 }
