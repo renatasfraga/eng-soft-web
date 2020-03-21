@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: ${datasource.url}
+    username: ${datasource.username}
+    password: ${datasource.password}
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    url: ${datasource.url}
+    user: ${datasource.username}
+    password: ${datasource.password}
+    schemas: bem-api
+    baseline-on-migrate: true

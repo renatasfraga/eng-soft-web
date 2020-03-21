@@ -1,8 +1,8 @@
 package edu.unisinos.bemapi.domains.user.service.impl;
 
-import edu.unisinos.bemapi.domains.user.entity.User;
-import edu.unisinos.bemapi.domains.user.repository.IUserRepository;
-import edu.unisinos.bemapi.domains.user.service.IUserService;
+import edu.unisinos.bemapi.domains.user.entity.Client;
+import edu.unisinos.bemapi.domains.user.repository.IClientRepository;
+import edu.unisinos.bemapi.domains.user.service.IClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class UserService implements IUserService {
+public class ClientService implements IClientService {
 
-    private final IUserRepository userRepository;
+    private final IClientRepository userRepository;
 
     @Override
-    public User findByDocument(String document) {
+    public Client findByDocument(String document) {
         log.info("Service - findByDocument - {}", document);
 
         return userRepository.findByDocument(document).orElseThrow();
