@@ -1,8 +1,9 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/bem-api
-    data-username: root
-    data-password: 12345678
+    username: root
+    password: 12345678
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
     show-sql: true
     properties:
@@ -11,10 +12,10 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     open-in-view: false
   flyway:
-    enabled: false
+    enabled: true
     url: jdbc:mysql://localhost:3306/bem-api
     user: root
     password: 12345678

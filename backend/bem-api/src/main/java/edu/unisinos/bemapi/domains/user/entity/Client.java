@@ -18,7 +18,8 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
-public class User extends EntityDefault {
+@Table(name = "client")
+public class Client extends EntityDefault {
 
     @Column(unique = true)
     private String document;
@@ -41,16 +42,16 @@ public class User extends EntityDefault {
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @Fetch(FetchMode.SUBSELECT)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "client_id")
     private Set<Address> addresses;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @Fetch(FetchMode.SUBSELECT)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "client_id")
     private Set<BankAccount> bankAccounts;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @Fetch(FetchMode.SUBSELECT)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "client_id")
     private Set<Contact> contacts;
 }
