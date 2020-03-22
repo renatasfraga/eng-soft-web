@@ -123,7 +123,7 @@ create table if not exists proposal
 	contract_id bigint null,
 	constraint proposal_pk primary key (id),
 	constraint proposal_plan_id_fk foreign key (proposal_plan_id) references proposal_plan (id),
-	constraint client_id_fk foreign key (client_id) references client(id),
+	constraint proposal_client_id_fk foreign key (client_id) references client(id),
 	constraint proposal_contract_id_fk foreign key (contract_id) references contract(id)
 );
 

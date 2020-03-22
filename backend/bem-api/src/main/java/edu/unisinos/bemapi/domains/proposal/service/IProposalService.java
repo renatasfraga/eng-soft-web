@@ -14,6 +14,8 @@ public interface IProposalService {
 
     Proposal findByUUID(String uuid);
 
+    Proposal findById(Long id);
+
     Page<Proposal> list(ProposalPlan proposalPlan, ProposalStatusEnum status, Pageable pageable);
 
 

@@ -4,9 +4,7 @@ package edu.unisinos.bemapi.domains.user.entity;
 import edu.unisinos.bemapi.domains.user.enums.CovenantEnum;
 import edu.unisinos.bemapi.domains.user.enums.SexEnum;
 import edu.unisinos.bemapi.utils.entity.EntityDefault;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -15,10 +13,11 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
+@Builder
 @Entity
-@Table(name = "client")
 public class Client extends EntityDefault {
 
     @Column(unique = true)
