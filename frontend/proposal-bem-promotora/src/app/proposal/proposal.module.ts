@@ -13,11 +13,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [NavbarComponent, ListProposalComponent, CreateProposalComponent, EditProposalComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatMenuModule,
