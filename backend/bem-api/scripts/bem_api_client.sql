@@ -1,0 +1,1 @@
+INSERT INTO `bem-api`.client (id, created_at, updated_at, document, full_name, sex, birth_date, mother_name, issuing_body, date_issue, covenant) VALUES (1, '2020-03-22 12:11:22', '2020-03-22 12:11:24', '03681169055', 'Renata dos Santos Fraga', 'FEMALE', '1996-11-05', 'Marcia Leao', 'SSP-RS', '2009-01-02', 'INSS');

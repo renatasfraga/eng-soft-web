@@ -1,0 +1,1 @@
+INSERT INTO `bem-api`.proposal_plan (id, created_at, updated_at, name, description, installments, interest_rate, min_amount, max_amount, start_at, end_at) VALUES (1, '2020-03-22 12:14:55', '2020-03-22 12:14:57', 'CONSIGNADO_SIMPLES', 'Consignado com valor acessível e taxas mais baixas', 30, 0.30, 1000.00, 3000.00, '2020-03-22 12:16:11', '2021-03-22 12:16:27');

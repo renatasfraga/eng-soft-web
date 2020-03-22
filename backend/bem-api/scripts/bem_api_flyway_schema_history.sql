@@ -1,0 +1,1 @@
+INSERT INTO `bem-api`.flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (1, '1.0', 'create schema', 'SQL', 'V1.0__create_schema.sql', 1457745341, 'root', '2020-03-21 21:27:55', 5755, 1);

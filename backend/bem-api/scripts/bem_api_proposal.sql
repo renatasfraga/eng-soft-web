@@ -1,0 +1,1 @@
+INSERT INTO `bem-api`.proposal (id, created_at, updated_at, uuid, amount, status, proposal_plan_id, client_id, contract_id) VALUES (5, '2020-03-22 13:03:30', '2020-03-22 13:30:47', 'b8dc7e62-20be-4c83-bac6-da460bd02ad5', 1233.00, 101, 1, 1, null);
