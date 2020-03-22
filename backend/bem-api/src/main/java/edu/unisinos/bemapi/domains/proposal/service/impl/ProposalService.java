@@ -13,6 +13,7 @@ import edu.unisinos.bemapi.utils.error.NoContentException;
 import edu.unisinos.bemapi.utils.messages.MessagesComponent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class ProposalService implements IProposalService {
         log.info("Service - create");
 
         proposal.setUuid(UUID.randomUUID().toString());
+        proposal.setStatusEnum(ProposalStatusEnum.AUT_RULE_WAIT);
         proposal.setProposalPlan(proposalPlanService.findById(proposal.getProposalPlan().getId()));
 
         validadeAmount(proposal.getProposalPlan(), proposal.getAmount());
@@ -72,18 +74,25 @@ public class ProposalService implements IProposalService {
     }
 
     @Override
-    public Page<Proposal> list(ProposalPlan proposalPlan, ProposalStatusEnum status, Pageable pageable) {
+    public Page<Proposal> list(Long proposalPlanId, ProposalStatusEnum statusEnum, Pageable pageable) {
         log.info("Service - list");
+        Proposal proposal = new Proposal();
 
-        return proposalRepository.findByProposalPlanAndStatus(proposalPlan, status, pageable);
+        if (proposalPlanId != null)
+            proposal.setProposalPlan(proposalPlanService.findById(proposalPlanId));
+
+        if (statusEnum != null)
+            proposal.setStatus(statusEnum.getValue());
+
+        return proposalRepository.findAll(Example.of(proposal), pageable);
     }
 
     private void validadeAmount(ProposalPlan proposalPlan, BigDecimal amount) {
-        if (amount.compareTo(proposalPlan.getMinAmount()) > 0 ||
-                amount.compareTo(proposalPlan.getMaxAmount()) < 0) {
+        if (amount.compareTo(proposalPlan.getMinAmount()) < 0 ||
+                amount.compareTo(proposalPlan.getMaxAmount()) > 0) {
             throw new ProposalValidationException(
                     messages.getWithParams("exception.proposal.plan.amount.validation",
-                            proposalPlan.getMaxAmount().toString(), proposalPlan.getMaxAmount().toString()));
+                            proposalPlan.getMinAmount().toString(), proposalPlan.getMaxAmount().toString()));
         }
     }
 }

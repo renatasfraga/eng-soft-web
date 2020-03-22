@@ -14,6 +14,6 @@ public class ProposalUpdateDTO {
 
     private BigDecimal amount;
 
-    private ProposalStatusEnum status;
+    private ProposalStatusEnum statusEnum;
 
 }
