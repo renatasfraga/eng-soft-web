@@ -17,7 +17,7 @@ public class ProposalListDTO {
 
     private BigDecimal amount;
 
-    private ProposalStatusEnum status;
+    private ProposalStatusEnum statusEnum;
 
     private ProposalPlanListDTO plan;
 

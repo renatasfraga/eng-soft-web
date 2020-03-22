@@ -22,8 +22,7 @@ public class Proposal extends EntityDefault {
 
     private BigDecimal amount;
 
-    @Enumerated(EnumType.ORDINAL)
-    private ProposalStatusEnum status;
+    private Integer status;
 
     @ManyToOne
     @JoinColumn(name = "proposal_plan_id")
@@ -36,4 +35,12 @@ public class Proposal extends EntityDefault {
     @OneToOne
     @JoinColumn(name = "contract_id")
     private Contract contract;
+
+    @Transient
+    private ProposalStatusEnum statusEnum;
+
+    @PostLoad
+    void fillTransient() {
+        this.statusEnum = ProposalStatusEnum.of(status);
+    }
 }

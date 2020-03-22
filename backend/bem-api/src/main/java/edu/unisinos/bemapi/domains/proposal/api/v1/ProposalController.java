@@ -5,7 +5,6 @@ import edu.unisinos.bemapi.domains.proposal.api.dto.ProposalListDTO;
 import edu.unisinos.bemapi.domains.proposal.api.dto.ProposalUpdateDTO;
 import edu.unisinos.bemapi.domains.proposal.api.mapper.IProposalMapper;
 import edu.unisinos.bemapi.domains.proposal.entity.Proposal;
-import edu.unisinos.bemapi.domains.proposal.entity.ProposalPlan;
 import edu.unisinos.bemapi.domains.proposal.enums.ProposalStatusEnum;
 import edu.unisinos.bemapi.domains.proposal.factory.ProposalFactory;
 import edu.unisinos.bemapi.domains.proposal.service.IProposalService;
@@ -26,7 +25,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping(path = "/v1/proposals", consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/v1/proposals")
 @RequiredArgsConstructor
 public class ProposalController {
 
@@ -34,7 +33,7 @@ public class ProposalController {
 
     private final IProposalMapper mapper;
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> create(@Valid @RequestBody ProposalCreateDTO proposalDTO) {
         log.info("Controller - create -> params: proposalDTO - {}", proposalDTO);
 
@@ -50,19 +49,21 @@ public class ProposalController {
     }
 
     @GetMapping(value = "/list")
-    public ResponseEntity<Object> list(@RequestParam(required = false) ProposalPlan proposalPlan,
-                                       @RequestParam(required = true) ProposalStatusEnum status,
+    public ResponseEntity<Object> list(@RequestParam(required = false) Long planId,
+                                       @RequestParam(required = false) ProposalStatusEnum status,
                                        @RequestParam(defaultValue = "0") int page,
                                        @RequestParam(defaultValue = "10") int size) {
         log.info("Controller - list -> params: page - {}, size - {}", page, size);
 
-        Page<Proposal> entityPage = proposalService.list(proposalPlan, status, PageRequest.of(page, size));
+        Page<Proposal> entityPage = proposalService.list(planId, status, PageRequest.of(page, size));
+
         List<ProposalListDTO> listDTO = mapper.toListDTO(entityPage.getContent());
+
         Page<ProposalListDTO> dtoPage = new PageImpl<>(listDTO, PageRequest.of(page, size),
                 entityPage.getTotalElements());
 
         log.info("Controller - list -> response: HttpStatus - {}", HttpStatus.OK);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(dtoPage);
     }
 
     @GetMapping(path = "/{uuid}")
@@ -72,16 +73,15 @@ public class ProposalController {
         ProposalListDTO proposalListDTO = mapper.toDTO(proposalService.findByUUID(uuid));
 
         log.info("Controller - list -> response: HttpStatus - {}", HttpStatus.OK);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(proposalListDTO);
     }
 
-    @PatchMapping(path = "/{id}")
+    @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> update(@PathVariable("id") Long id,
                                          @Valid @RequestBody ProposalUpdateDTO proposalDTO) {
         log.info("Controller - update -> params: id - {}, proposalDTO - {}", id, proposalDTO);
 
         Proposal proposal = proposalService.findById(id);
-
         mapper.merge(proposal, proposalDTO);
         proposalService.update(proposal);
 

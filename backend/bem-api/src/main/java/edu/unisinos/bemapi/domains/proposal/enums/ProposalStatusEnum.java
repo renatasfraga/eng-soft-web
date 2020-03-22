@@ -1,5 +1,7 @@
 package edu.unisinos.bemapi.domains.proposal.enums;
 
+import java.util.stream.Stream;
+
 public enum ProposalStatusEnum {
 
     AUT_RULE_WAIT(10),
@@ -19,5 +21,13 @@ public enum ProposalStatusEnum {
 
     public int getValue() {
         return value;
+    }
+
+
+    public static ProposalStatusEnum of(int value) {
+        return Stream.of(ProposalStatusEnum.values())
+                .filter(p -> p.getValue() == value)
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
