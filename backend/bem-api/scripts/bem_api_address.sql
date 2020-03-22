@@ -1,0 +1,1 @@
+INSERT INTO `bem-api`.address (id, created_at, updated_at, is_main, street, number, zip_code, neighborhood, city, state, complement, client_id) VALUES (1, '2020-03-22 12:13:04', '2020-03-22 12:13:06', true, 'Tenente Mario Telles', '586', 94415000, 'Taruma', 'Viamao', 'RS', 'Casa 1', 1);

@@ -1,0 +1,1 @@
+INSERT INTO `bem-api`.contact (id, created_at, updated_at, is_main, phone_number, email_address, description, client_id) VALUES (1, '2020-03-22 12:13:51', '2020-03-22 12:13:53', true, '996007692', 'renatasfraga@gmail.com', null, 1);
