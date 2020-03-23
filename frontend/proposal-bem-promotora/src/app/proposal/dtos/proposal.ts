@@ -6,6 +6,11 @@ export interface ProposalCreateDTO {
   clientDocument: string;
 }
 
+export interface ProposalUpdateDTO {
+  amount: number;
+  statusEnum: ProposalStatus;
+}
+
 export interface ProposalListDTO {
   uuid: string;
   amount: number;
@@ -47,31 +52,3 @@ export interface PageDTO {
   numberOfElements: number;
   empty: boolean;
 }
-
-/*{
-    "pageable": {
-        "sort": {
-            "sorted": false,
-            "unsorted": true,
-            "empty": true
-        },
-        "offset": 0,
-        "pageNumber": 0,
-        "pageSize": 10,
-        "paged": true,
-        "unpaged": false
-    },
-    "totalElements": 1,
-    "totalPages": 1,
-    "last": true,
-    "size": 10,
-    "number": 0,
-    "sort": {
-        "sorted": false,
-        "unsorted": true,
-        "empty": true
-    },
-    "first": true,
-    "numberOfElements": 1,
-    "empty": false
-} */

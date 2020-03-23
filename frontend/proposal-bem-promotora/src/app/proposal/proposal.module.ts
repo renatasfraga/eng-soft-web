@@ -14,6 +14,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import { ProposalService } from './integrations/proposal.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [NavbarComponent, ListProposalComponent, CreateProposalComponent, EditProposalComponent],
@@ -26,7 +29,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatGridListModule,
     MatTableModule,
-    MatToolbarModule
-  ]
+    MatToolbarModule,
+    MatIconModule,
+    MatPaginatorModule
+  ],
+  providers: [ProposalService]
 })
 export class ProposalModule {}

@@ -23,6 +23,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
+@CrossOrigin()
 @Slf4j
 @RestController
 @RequestMapping(path = "/v1/proposals")
