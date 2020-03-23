@@ -5,6 +5,11 @@
 export const environment = {
   production: false,
   port: 4100,
+  integrations: {
+    bemapi: {
+      url: 'http://localhost:8088/v1/'
+    }
+  }
 };
 
 /*

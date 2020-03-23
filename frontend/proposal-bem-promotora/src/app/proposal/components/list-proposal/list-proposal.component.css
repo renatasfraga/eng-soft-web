@@ -5,3 +5,21 @@ table {
 #toolbar {
   width: 100%;
 }
+
+mat-grid-list {
+  width: 80%;
+  left: 10%;
+}
+
+body {
+  background-color: orange;
+}
+
+tr.header-tr {
+  background-color: #022a5e;
+}
+
+.mat-header-cell {
+  color: #ffffff;
+  font-size: 1em;
+}

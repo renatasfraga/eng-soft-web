@@ -1,12 +1,29 @@
-<table id="nav">
-  <tr>
-    <td style="padding-left: 5%;"><img src="../../../../assets/logo.png" alt="logo" /></td>
-    <td class="navbar-title">{{ title }}</td>
-    <td>
-      <button mat-flat-button color="primary">Listagem</button>
-    </td>
-    <td>
-      <button mat-flat-button color="accent">NOVO</button>
-    </td>
-  </tr>
-</table>
+<mat-grid-list [cols]="1">
+  <mat-grid-tile-header>
+    <table>
+      <tr>
+        <td>
+          <img src="../../../../assets/logo-new.jpg" alt="logo" />
+        </td>
+        <td>
+          <button mat-button color="primary">
+            INÍCIO
+            <mat-icon>home</mat-icon>
+          </button>
+        </td>
+        <td>
+          <button mat-button color="primary">
+            NOVO
+            <mat-icon>add</mat-icon>
+          </button>
+        </td>
+        <td>
+          <button mat-button color="primary">
+            SAIR
+            <mat-icon>logout</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </mat-grid-tile-header>
+</mat-grid-list>

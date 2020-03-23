@@ -1,12 +1,13 @@
-#nav {
+mat-grid-list {
   background-color: #022a5e;
-  width: 100%;
-  border-spacing: 1px;
 }
 
-.navbar-title {
-  color: white;
-  font-weight: bolder;
-  font-size: 20px;
-  padding-right: 0%;
+.mat-primary {
+  background-color: transparent;
+}
+
+img {
+  border-radius: 10%;
+  max-width: 35%;
+  max-height: 35%;
 }
