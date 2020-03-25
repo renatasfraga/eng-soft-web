@@ -17,10 +17,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProposalService } from './integrations/proposal.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [NavbarComponent, ListProposalComponent, CreateProposalComponent, EditProposalComponent],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
     BrowserModule,
@@ -31,7 +37,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatToolbarModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
   providers: [ProposalService]
 })

@@ -1,8 +1,8 @@
 import { ProposalStatus } from '../enums/proposal.enums';
 
-export interface ProposalCreateDTO {
-  amount: number;
-  planId: number;
+export class ProposalCreateDTO {
+  amount: string;
+  planId: string;
   clientDocument: string;
 }
 
@@ -20,8 +20,15 @@ export interface ProposalListDTO {
 }
 
 export interface ProposalPlanListDTO {
+  id: number;
   name: string;
   description: string;
+}
+
+export interface ClientListDTO {
+  id: number;
+  fullName: string;
+  document: string;
 }
 
 export interface PageDTO {

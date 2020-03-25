@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -25,4 +27,13 @@ public class ProposalPlanService implements IProposalPlanService {
         return proposalPlanRepository.findById(id).orElseThrow(() ->
                 new ProposalPlanNotFoundException(messages.get("exception.resource.notfound")));
     }
+
+    @Override
+    public List<ProposalPlan> findAll() {
+        log.info("Service - findAll");
+
+        return proposalPlanRepository.findAll();
+    }
+
+
 }

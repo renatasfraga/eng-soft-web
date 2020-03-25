@@ -9,12 +9,10 @@ import { CreateUserComponent } from './user/components/create-user/create-user.c
 const routes: Routes = [
   {
     path: 'proposals',
-    component: ListProposalComponent,
-    children: [
-      { path: 'new', component: CreateProposalComponent },
-      { path: 'edit/:id', component: EditProposalComponent }
-    ]
+    component: ListProposalComponent
   },
+  { path: 'proposals/new', component: CreateProposalComponent },
+  { path: 'proposals/edit/:id', component: EditProposalComponent },
   {
     path: 'signin',
     component: SignInComponent

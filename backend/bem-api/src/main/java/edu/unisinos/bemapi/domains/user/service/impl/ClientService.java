@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -24,5 +26,12 @@ public class ClientService implements IClientService {
 
         return userRepository.findByDocument(document).orElseThrow(() ->
                 new ClientNotFoundException(messages.get("exception.resource.notfound")));
+    }
+
+    @Override
+    public List<Client> findAll() {
+        log.info("Service - findAll");
+
+        return userRepository.findAll();
     }
 }
