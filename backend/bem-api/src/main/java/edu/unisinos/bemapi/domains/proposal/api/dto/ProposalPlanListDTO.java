@@ -9,6 +9,8 @@ import lombok.ToString;
 @ToString
 public class ProposalPlanListDTO {
 
+    private Long id;
+
     private String name;
 
     private String description;

@@ -24,4 +24,5 @@ public interface IProposalMapper {
 
     ProposalPlanListDTO proposalPlanToDTO(ProposalPlan proposalPlan);
 
+    List<ProposalPlanListDTO> toListProposalPlanDTO(List<ProposalPlan> listProposals);
 }
