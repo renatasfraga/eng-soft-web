@@ -1,15 +1,19 @@
-const Schema = require("./schema");
 const Joi = require("@hapi/joi");
 
-class ClientSchema extends Schema {
+class ClientSchema {
   static generateToken(data) {
-    const schema = {
+    const schema = Joi.object({
       data: Joi.object({
         username: Joi.string().required(),
         password: Joi.string().required()
-      }).required()
-    };
-    return this.validate(data, schema);
+      })
+    });
+
+    return schema.validate(data, {
+      abortEarly: false,
+      stripUnknown: true,
+      allowUnknown: true
+    });
   }
 }
 

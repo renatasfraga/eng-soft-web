@@ -1,9 +1,12 @@
-const knex = require("../../knexfile");
+const { knex } = require("../../database/config/config-db");
 
 class ClientModel {
-  static async getUsernameAndPassword(username, password) {
-    return await knex
-      .table("client")
+  static get table() {
+    return knex("client");
+  }
+
+  static getUsernameAndPassword(username, password) {
+    return this.table
       .where("username", username)
       .where("password", password)
       .first();

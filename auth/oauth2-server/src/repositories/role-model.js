@@ -1,8 +1,12 @@
-const knex = require("../../knexfile");
+const { knex } = require("../../database/config/config-db");
 
 class RoleModel {
-  static async getByScopeId(scopeId) {
-    return await knex.table("role").where("scopeId", scopeId);
+  static get table() {
+    return knex("role");
+  }
+
+  static getByScopeId(scopeId) {
+    return this.table.where("scopeId", scopeId);
   }
 }
 
