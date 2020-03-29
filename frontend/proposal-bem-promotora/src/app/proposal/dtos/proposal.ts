@@ -1,8 +1,8 @@
 import { ProposalStatus } from '../enums/proposal.enums';
 
-export class ProposalCreateDTO {
-  amount: string;
-  planId: string;
+export interface ProposalCreateDTO {
+  amount: number;
+  planId: number;
   clientDocument: string;
 }
 

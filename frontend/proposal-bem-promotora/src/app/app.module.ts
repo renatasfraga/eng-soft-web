@@ -27,11 +27,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [AppComponent],
   imports: [
     FormsModule,
+    BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     ProposalModule,
     UserModule,
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,

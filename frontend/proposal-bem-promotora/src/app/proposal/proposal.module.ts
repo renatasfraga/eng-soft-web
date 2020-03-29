@@ -21,15 +21,17 @@ import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [NavbarComponent, ListProposalComponent, CreateProposalComponent, EditProposalComponent],
   imports: [
-    FormsModule,
+    BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
     CommonModule,
     HttpClientModule,
-    BrowserModule,
     BrowserAnimationsModule,
     MatMenuModule,
     MatButtonModule,

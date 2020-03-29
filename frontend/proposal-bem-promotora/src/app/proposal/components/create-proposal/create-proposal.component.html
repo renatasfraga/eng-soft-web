@@ -3,14 +3,14 @@
     <app-navbar></app-navbar>
   </mat-grid-tile-header>
 
-  <mat-grid-list cols="1" rowHeight="300px">
-    <form (ngSubmit)="save()">
+  <mat-grid-list cols="1" rowHeight="250px">
+    <form [formGroup]="formProposal" (ngSubmit)="onFormSubmit()">
       <mat-form-field>
         <input
           type="text"
           placeholder="Plano"
-          [(ngModel)]="proposalEntity.planId"
           aria-label="plan"
+          formControlName="planId"
           matInput
           [matAutocomplete]="planAutoComplete"
         />
@@ -22,11 +22,10 @@
         <input
           type="text"
           placeholder="Usuário"
-          [(ngModel)]="proposalEntity.clientDocument"
           aria-label="client"
+          formControlName="clientDocument"
           matInput
           [matAutocomplete]="clientAutocomplete"
-          [ngModelOptions]="{ standalone: true }"
         />
         <mat-autocomplete #clientAutocomplete="matAutocomplete">
           <mat-option *ngFor="let client of clientOptions" [value]="client.document">
@@ -36,7 +35,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Valor</mat-label>
-        <input matInput type="text" [(ngModel)]="proposalEntity.amount" class="example-right-align" />
+        <input formControlName="amount" matInput type="text" class="example-right-align" />
         <span matPrefix>R$&nbsp;</span>
       </mat-form-field>
       <button mat-raised-button type="submit" color="primary">SALVAR</button>
