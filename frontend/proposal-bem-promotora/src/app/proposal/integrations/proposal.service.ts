@@ -7,18 +7,16 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProposalService {
-  private readonly httpClient: HttpClient;
   private readonly url: string;
 
   constructor(private http: HttpClient) {
-    this.httpClient = http;
     this.url = environment.integrations.bemapi.url + 'proposals';
   }
 
   create(proposalDTO: ProposalCreateDTO): Observable<any> {
     let response: any;
 
-    this.httpClient
+    this.http
       .post<ProposalCreateDTO>(this.url, proposalDTO, { observe: 'response' })
       .subscribe(resp => (response = resp));
 
@@ -28,7 +26,7 @@ export class ProposalService {
   async update(id: number, proposalDTO: ProposalUpdateDTO): Promise<void> {
     const customUrl = this.url + '/' + id;
     try {
-      await this.httpClient.patch(customUrl, proposalDTO).toPromise();
+      await this.http.patch(customUrl, proposalDTO).toPromise();
     } catch (error) {
       throw Error(`ProposalService: update -> error - ${error}`);
     }
@@ -38,7 +36,7 @@ export class ProposalService {
     const customUrl = this.url + '/' + uuid;
     try {
       return new Promise(async () => {
-        return await this.httpClient.get(customUrl).toPromise();
+        return await this.http.get(customUrl).toPromise();
       });
     } catch (error) {
       throw Error(`ProposalService: findByUUID -> error - ${error}`);
@@ -60,7 +58,7 @@ export class ProposalService {
 
     return new Promise(async (resolve, reject) => {
       try {
-        const data = await this.httpClient.get<PageDTO>(customUrl, options).toPromise();
+        const data = await this.http.get<PageDTO>(customUrl, options).toPromise();
         resolve(data);
       } catch (error) {
         return reject();

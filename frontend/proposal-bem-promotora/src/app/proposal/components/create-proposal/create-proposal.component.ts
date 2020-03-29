@@ -11,11 +11,14 @@ import { UserService } from '../../integrations/user.service';
   styleUrls: ['./create-proposal.component.css']
 })
 export class CreateProposalComponent implements OnInit {
-  formProposal = new FormControl();
+  formProposal = new FormGroup({
+    amount: new FormControl(),
+    planId: new FormControl(),
+    clientDocument: new FormControl()
+  });
+
   planOptions: ProposalPlanListDTO[] = [];
   clientOptions: ClientListDTO[] = [];
-
-  proposalEntity: ProposalCreateDTO;
 
   constructor(
     private proposalService: ProposalService,
@@ -24,12 +27,17 @@ export class CreateProposalComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.proposalEntity = new ProposalCreateDTO();
     this.planOptions = await this.planService.listAll();
     this.clientOptions = await this.clientService.listAll();
   }
 
-  save() {
-    this.proposalService.create(this.proposalEntity);
+  onFormSubmit(): void {
+    this.proposalService.create({
+      amount: this.formProposal.get('amount').value,
+      clientDocument: this.formProposal.get('clientDocument').value,
+      planId: this.formProposal.get('planId').value
+    });
+
+    this.formProposal.reset();
   }
 }

@@ -38,7 +38,7 @@ public class ProposalService implements IProposalService {
         log.info("Service - create");
 
         proposal.setUuid(UUID.randomUUID().toString());
-        proposal.setStatusEnum(ProposalStatusEnum.AUT_RULE_WAIT);
+        proposal.setStatus(ProposalStatusEnum.AUT_RULE_WAIT.getValue());
         proposal.setProposalPlan(proposalPlanService.findById(proposal.getProposalPlan().getId()));
 
         validadeAmount(proposal.getProposalPlan(), proposal.getAmount());
