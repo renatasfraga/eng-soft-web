@@ -1,13 +1,14 @@
+const env = require("./src/env");
+
 module.exports = {
-  development: {
-    client: "mysql",
-    connection: "mysql://root:123456@localhost:3306/oauth2-server",
-    migrations: {
-      directory: __dirname + "/knex/migrations"
-    }
+  client: "mysql",
+  connection: {
+    database: env.DB_DATABASE,
+    user: env.DB_USERNAME,
+    password: env.DB_PASSWORD,
+    host: env.DB_HOST
   },
-  production: {
-    client: "mysql",
-    connection: "mysql://root:123456@127.0.0.1:3306/knexdb"
+  migrations: {
+    directory: __dirname + "/database/migrations"
   }
 };

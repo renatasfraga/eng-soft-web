@@ -1,9 +1,10 @@
 const ClientService = require("../services/client-service");
+const Logger = require("../../src/helpers/logger");
 
 class ClientController {
   static async post(req, res) {
     try {
-      const { username, password } = req;
+      const { username, password } = req.body;
 
       const token = await ClientService.getByUsernameAndPassword(
         username,

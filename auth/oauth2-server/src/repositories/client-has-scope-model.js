@@ -1,8 +1,12 @@
-const knex = require("../../knexfile");
+const { knex } = require("../../database/config/config-db");
 
 class ClientHasScope {
-  static async getByClientId(clientId) {
-    return await knex.table("client_has_scope").where("clientId", clientId);
+  static get table() {
+    return knex("clientHasScope");
+  }
+
+  static getByClientId(clientId) {
+    return this.table.where("clientId", clientId);
   }
 }
 

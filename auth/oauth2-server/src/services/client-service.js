@@ -3,36 +3,34 @@ const ClientHasScopeModel = require("../repositories/client-has-scope-model");
 const ScopeModel = require("../repositories/scope-model");
 const RoleModel = require("../repositories/role-model");
 const jwt = require("jwt-simple");
+const NotFound = require("../helpers/errors");
 
 class ClientService {
   static async getByUsernameAndPassword(username, password) {
-    const client = await ClientModel.getByUsernameAndPassword(
-      username,
-      password
-    );
-    if (client) {
-      const clientHasScopes = await ClientHasScopeModel.getByClientId(
-        client.id
-      );
+    const client = await ClientModel.getUsernameAndPassword(username, password);
 
-      let scopes = [];
-
-      clientHasScopes.forEach(async cliHasScope => {
-        return scopes.push(await ScopeModel.getById(cliHasScope.scopeId));
-      });
-
-      scopes.forEach(async scope => {
-        scope.roles = await RoleModel.getByScopeId(scope.id);
-      });
-
-      client.scopes = scopes;
-
-      return {
-        accessToken: this.transformJWT(client),
-        expiresIn: client.expirationTime
-      };
+    if (!client) {
+      throw new NotFound("Client not exists");
     }
-    throw Error("Client not exists");
+
+    const clientHasScopes = await ClientHasScopeModel.getByClientId(client.id);
+
+    let scopes = [];
+
+    for (const clientScope of clientHasScopes) {
+      scopes.push(await ScopeModel.getById(clientScope.scopeId));
+    }
+
+    for (const scope of scopes) {
+      scope.roles = await RoleModel.getByScopeId(scope.id);
+    }
+
+    client.scopes = scopes;
+
+    return {
+      accessToken: this.transformJWT(client),
+      expiresIn: client.expirationTime
+    };
   }
 
   static transformJWT(client) {
