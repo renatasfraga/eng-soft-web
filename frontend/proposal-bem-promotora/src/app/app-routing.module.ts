@@ -4,19 +4,18 @@ import { ListProposalComponent } from './proposal/components/list-proposal/list-
 import { CreateProposalComponent } from './proposal/components/create-proposal/create-proposal.component';
 import { EditProposalComponent } from './proposal/components/edit-proposal/edit-proposal.component';
 import { SignInComponent } from './user/components/sign-in/sign-in.component';
-import { CreateUserComponent } from './user/components/create-user/create-user.component';
+import { AuthGuardService } from './security/guards/auth-guard.service';
 
 const routes: Routes = [
   {
     path: 'proposals',
-    component: ListProposalComponent
+    component: ListProposalComponent,
+    canActivate: [AuthGuardService]
   },
-  { path: 'proposals/new', component: CreateProposalComponent },
-  { path: 'proposals/edit/:id', component: EditProposalComponent },
-  {
-    path: 'signin',
-    component: SignInComponent
-  }
+  { path: 'proposals/new', component: CreateProposalComponent, canActivate: [AuthGuardService] },
+  { path: 'proposals/edit/:id', component: EditProposalComponent, canActivate: [AuthGuardService] },
+  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+  { path: 'sign-in', component: SignInComponent }
 ];
 
 @NgModule({

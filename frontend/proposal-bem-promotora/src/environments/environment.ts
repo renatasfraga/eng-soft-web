@@ -8,6 +8,9 @@ export const environment = {
   integrations: {
     bemapi: {
       url: 'http://localhost:8088/v1/'
+    },
+    oauth2Server: {
+      url: 'http://localhost:3001/oauth2-server/'
     }
   }
 };
