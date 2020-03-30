@@ -9,7 +9,6 @@ exports.up = function(knex) {
       .unique()
       .notNull();
     table.string("password").notNull();
-    table.bigInteger("expirationTime").notNull();
   });
 };
 

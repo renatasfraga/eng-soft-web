@@ -26,10 +26,10 @@ class ClientService {
     }
 
     client.scopes = scopes;
+    client.exp = this.expirationTimeFormatter();
 
     return {
-      accessToken: this.transformJWT(client),
-      expiresIn: client.expirationTime
+      accessToken: this.transformJWT(client)
     };
   }
 
@@ -38,6 +38,12 @@ class ClientService {
       "TWFpb3IgcXVlIGEgdHJpc3RlemEgZGUgbsOjbyBoYXZlciB2ZW5jaWRv"
     );
     return jwt.encode(client, secret);
+  }
+
+  static expirationTimeFormatter() {
+    const date = new Date();
+    date.setMinutes(date.getMinutes() + 3);
+    return date / 1000;
   }
 }
 
