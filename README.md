@@ -13,11 +13,16 @@
 
 #### - OAUTH2-SERVER
 - Stack:
-  - Node 13
+  - Node 12
   - Express
   - MySQL
   - JWT Simple
   - Knex
   - @hapi/joi
 
-  
+#### - PROPOSAL-BEM-API
+- Stack
+  - Angular 9
+  - Angular Material
+  - JwtHelperService
+
