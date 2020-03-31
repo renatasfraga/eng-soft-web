@@ -1,29 +1,24 @@
-<mat-grid-list [cols]="1">
-  <mat-grid-tile-header>
-    <table>
-      <tr>
-        <td>
-          <img src="../../../../assets/logo-new.jpg" alt="logo" />
-        </td>
-        <td>
-          <a routerLink="/proposals" mat-button color="primary">
-            INÍCIO
-            <mat-icon>home</mat-icon>
-          </a>
-        </td>
-        <td>
-          <a routerLink="/proposals/new" mat-button color="primary">
-            NOVO
-            <mat-icon>add</mat-icon>
-          </a>
-        </td>
-        <td>
-          <button mat-button color="primary">
-            SAIR
-            <mat-icon>logout</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </table>
-  </mat-grid-tile-header>
+<mat-grid-list [cols]="12" rowHeight="4em">
+  <mat-grid-tile [colspan]="1">
+    <img src="../../../../assets/logo-new.jpg" alt="logo-navbar" />
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1">
+    <button mat-button color="primary" routerLink="/proposals" id="button-home">
+      <mat-icon>home</mat-icon>
+      HOME
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1">
+    <button mat-button color="primary" routerLink="/proposals/new" id="button-new">
+      <mat-icon>add</mat-icon>
+      NOVO
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="8"> </mat-grid-tile>
+  <mat-grid-tile [colspan]="1">
+    <button mat-button color="primary" (click)="signout()">
+      <mat-icon>logout</mat-icon>
+      SAIR
+    </button>
+  </mat-grid-tile>
 </mat-grid-list>

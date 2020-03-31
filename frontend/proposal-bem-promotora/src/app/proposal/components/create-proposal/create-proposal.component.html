@@ -2,9 +2,12 @@
   <mat-grid-tile-header>
     <app-navbar></app-navbar>
   </mat-grid-tile-header>
-
   <mat-grid-list cols="1" rowHeight="250px">
-    <form [formGroup]="formProposal" (ngSubmit)="onFormSubmit()">
+    <mat-list-item>Nova Proposta</mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <form [formGroup]="formProposal" (ngSubmit)="create()">
       <mat-form-field>
         <input
           type="text"
@@ -38,7 +41,7 @@
         <input formControlName="amount" matInput type="text" class="example-right-align" />
         <span matPrefix>R$&nbsp;</span>
       </mat-form-field>
-      <button mat-raised-button type="submit" color="primary">SALVAR</button>
+      <button mat-raised-button type="submit" [disabled]="!formProposal.valid" color="primary">SALVAR</button>
     </form>
   </mat-grid-list>
 </body>

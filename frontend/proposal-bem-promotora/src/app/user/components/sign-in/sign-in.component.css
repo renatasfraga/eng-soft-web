@@ -28,3 +28,20 @@ a,
 mat-form-field {
   width: 100%;
 }
+
+body {
+  background-color: #022a5e;
+}
+
+.mat-card-image {
+  width: 25%;
+  height: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10%;
+}
+
+.mat-flat-button {
+  background-color: orange;
+  color: #000000;
+}

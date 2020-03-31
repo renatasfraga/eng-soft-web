@@ -22,9 +22,21 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { ProposalCreateSuccessComponent } from './components/modals-snackbar/proposal-create-success/proposal-create-success.component';
+import { ProposalCreateErrorComponent } from './components/modals-snackbar/proposal-create-error/proposal-create-error.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [NavbarComponent, ListProposalComponent, CreateProposalComponent, EditProposalComponent],
+  declarations: [
+    NavbarComponent,
+    ListProposalComponent,
+    CreateProposalComponent,
+    EditProposalComponent,
+    ProposalCreateSuccessComponent,
+    ProposalCreateErrorComponent
+  ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
@@ -42,8 +54,12 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    MatDividerModule,
+    MatListModule,
+    MatSnackBarModule
   ],
-  providers: [ProposalService]
+  providers: [ProposalService],
+  entryComponents: [ProposalCreateErrorComponent, ProposalCreateSuccessComponent]
 })
 export class ProposalModule {}

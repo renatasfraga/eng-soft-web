@@ -21,9 +21,12 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './security/guards/auth-guard.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,6 +51,9 @@ import { JwtModule } from '@auth0/angular-jwt';
     MatInputModule,
     MatPaginatorModule,
     MatAutocompleteModule,
+    MatSnackBarModule,
+    MatDividerModule,
+    MatListModule,
     JwtModule
   ],
   providers: [AuthGuardService],
