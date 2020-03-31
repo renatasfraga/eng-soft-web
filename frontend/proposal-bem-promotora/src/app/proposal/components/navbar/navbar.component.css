@@ -2,12 +2,17 @@ mat-grid-list {
   background-color: #022a5e;
 }
 
-.mat-primary {
-  background-color: transparent;
-}
-
 img {
   border-radius: 10%;
-  max-width: 35%;
-  max-height: 35%;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+#button-home {
+  width: 40%;
+  padding-left: 0%;
+}
+
+#button-new {
+  width: 10%;
 }

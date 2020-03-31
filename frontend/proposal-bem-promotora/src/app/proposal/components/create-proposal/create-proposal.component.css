@@ -18,3 +18,8 @@ mat-grid-list {
 mat-form-field {
   width: 100%;
 }
+
+mat-list-item {
+  font-size: 18px;
+  font-family: monospace;
+}

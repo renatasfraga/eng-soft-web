@@ -3,14 +3,15 @@ const ClientHasScopeModel = require("../repositories/client-has-scope-model");
 const ScopeModel = require("../repositories/scope-model");
 const RoleModel = require("../repositories/role-model");
 const jwt = require("jwt-simple");
-const NotFound = require("../helpers/errors");
+const { NotFoundError } = require("../helpers/errors");
+const Logger = require("../helpers/logger");
 
 class ClientService {
   static async getByUsernameAndPassword(username, password) {
     const client = await ClientModel.getUsernameAndPassword(username, password);
 
     if (!client) {
-      throw new NotFound("Client not exists");
+      return;
     }
 
     const clientHasScopes = await ClientHasScopeModel.getByClientId(client.id);
@@ -42,7 +43,7 @@ class ClientService {
 
   static expirationTimeFormatter() {
     const date = new Date();
-    date.setMinutes(date.getMinutes() + 3);
+    date.setMinutes(date.getMinutes() + 20);
     return date / 1000;
   }
 }

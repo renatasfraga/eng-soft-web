@@ -10,14 +10,18 @@ export class AuthGuardService implements CanActivate {
 
   constructor(private router: Router, private oauth2Server: Oauth2ServerService, private jwtHelper: JwtHelperService) {}
 
-  async login(username: string, password: string): Promise<any> {
+  async login(username: string, password: string): Promise<boolean> {
     const resp = await this.oauth2Server.login(username, password);
+    console.log('loga resposta' + resp);
 
     if (resp && resp.accessToken) {
       this.accessToken = resp;
       this.isActivate = true;
       localStorage.setItem('token', resp.accessToken);
+      return true;
     }
+
+    return false;
   }
 
   isAuthenticated(): boolean {

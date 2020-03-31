@@ -28,22 +28,31 @@ export class ListProposalComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.proposals = await this.list(null, null, 0, 5);
+    this.proposals = await this.loadDisplay(null, null, 0, 5);
   }
 
-  async list(status?: ProposalStatus, planId?: number, page?: number, size?: number): Promise<ProposalDisplay[]> {
-    this.page = await this.service.findAll(status, planId, page, size);
+  async loadDisplay(
+    status?: ProposalStatus,
+    planId?: number,
+    page?: number,
+    size?: number
+  ): Promise<ProposalDisplay[]> {
+    let listDisplay: ProposalDisplay[] = [];
+    try {
+      this.page = await this.service.findAll(status, planId, page, size);
 
-    let proposalDisplayList: ProposalDisplay[] = [];
-    this.page.content.forEach((proposal: ProposalListDTO) => {
-      proposalDisplayList.push({
-        uuid: proposal.uuid,
-        amount: proposal.amount,
-        status: proposal.statusEnum,
-        planName: proposal.plan.name
+      this.page.content.forEach(proposal => {
+        listDisplay.push({
+          uuid: proposal.uuid,
+          amount: proposal.amount,
+          status: proposal.statusEnum,
+          planName: proposal.plan.name
+        });
       });
-    });
+    } catch (error) {
+      console.error('Erro ao obter listagem');
+    }
 
-    return proposalDisplayList;
+    return listDisplay;
   }
 }

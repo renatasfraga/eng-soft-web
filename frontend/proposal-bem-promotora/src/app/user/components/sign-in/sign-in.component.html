@@ -1,30 +1,37 @@
-<mat-grid-list cols="1" rowHeight="40em">
-  <mat-grid-tile>
-    <mat-card>
-      <form [formGroup]="formLogin" (ngSubmit)="login()">
-        <mat-form-field appearance="outline" color="basic">
-          <mat-label>Username</mat-label>
-          <input matInput placeholder="Username" formControlName="username" />
-        </mat-form-field>
+<body>
+  <mat-grid-list cols="1" rowHeight="40em">
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <img mat-card-image src="../../../../assets/logo-new.jpg" alt="Logotipo" />
+        </mat-card-header>
+        <form [formGroup]="formLogin" (ngSubmit)="login()">
+          <mat-form-field appearance="outline" color="basic">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Username" formControlName="username" />
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Password </mat-label>
-          <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="hidePassword = !hidePassword"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hidePassword"
-          >
-            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          <mat-form-field appearance="outline">
+            <mat-label>Password </mat-label>
+            <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hidePassword = !hidePassword"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidePassword"
+            >
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <button mat-flat-button color="accent" type="submit" [disabled]="!formLogin.valid" style="width: 100%;">
+            LOGIN
           </button>
-        </mat-form-field>
 
-        <button mat-flat-button color="accent" type="submit" style="width: 100%;">LOGIN</button>
-
-        <a mat-button routerLink=".">Não é cadastrado? Crie sua conta</a>
-      </form>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+          <a mat-button routerLink=".">Não é cadastrado? Crie sua conta</a>
+        </form>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</body>

@@ -13,14 +13,8 @@ export class ProposalService {
     this.url = environment.integrations.bemapi.url + 'proposals';
   }
 
-  create(proposalDTO: ProposalCreateDTO): Observable<any> {
-    let response: any;
-
-    this.http
-      .post<ProposalCreateDTO>(this.url, proposalDTO, { observe: 'response' })
-      .subscribe(resp => (response = resp));
-
-    return response;
+  async create(proposalDTO: ProposalCreateDTO): Promise<any> {
+    return await this.http.post<ProposalCreateDTO>(this.url, proposalDTO).toPromise();
   }
 
   async update(id: number, proposalDTO: ProposalUpdateDTO): Promise<void> {
@@ -52,17 +46,8 @@ export class ProposalService {
     if (page) params.set('page', page.toString());
     if (size) params.set('size', size.toString());
 
-    const options: any = {
-      params: params
-    };
-
-    return new Promise(async (resolve, reject) => {
-      try {
-        const data = await this.http.get<PageDTO>(customUrl, options).toPromise();
-        resolve(data);
-      } catch (error) {
-        return reject();
-      }
-    });
+    return await this.http
+      .get<PageDTO>(customUrl, { params })
+      .toPromise();
   }
 }
