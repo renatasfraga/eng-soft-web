@@ -10,9 +10,7 @@ class ClientService {
   static async getByUsernameAndPassword(username, password) {
     const client = await ClientModel.getUsernameAndPassword(username, password);
 
-    if (!client) {
-      return;
-    }
+    if (!client) return;
 
     const clientHasScopes = await ClientHasScopeModel.getByClientId(client.id);
 
@@ -43,7 +41,7 @@ class ClientService {
 
   static expirationTimeFormatter() {
     const date = new Date();
-    date.setMinutes(date.getMinutes() + 20);
+    date.setMinutes(date.getMinutes() + 2);
     return date / 1000;
   }
 }
